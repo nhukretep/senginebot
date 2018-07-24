@@ -17,6 +17,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
+# Test change
 
 # Define command handlers
 def start(bot, update):
