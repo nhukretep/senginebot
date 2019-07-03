@@ -8,7 +8,7 @@ import json
 import codecs
 import requests as r
 from bs4 import BeautifulSoup
-	
+
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -30,7 +30,7 @@ def error(bot, update, error):
 
 def getEisbachTemp():
     url = 'https://www.eisbachwetter.de/'
-    
+
     response = r.get(url)
     # print(response)
 
@@ -44,10 +44,10 @@ def getEisbachTemp():
 
 # message handler
 def buildMorningBriefing():
-        
+
     temp = -273.0
     temp = getEisbachTemp()
-    
+
     kalt = 'nur die harten kommen in den Garten...'
     ok = 'man sieht sich im englischen ... Badehose nicht vergessen!'
     warm = 'Absolute Badepflicht! Badehose optional.'
@@ -72,14 +72,14 @@ def sendMorningBriefing(bot, update):
 
     with open('chat_id_group.txt', 'r') as t:
         chat_id_group = t.read()
-    
+
     # bot.send_message(chat_id=chat_id_self, text=buildMorningBriefing()) # dev
     bot.send_message(chat_id=chat_id_group, text=buildMorningBriefing()) # prod
 
 # def ipp(bot, update):
 #     """Send IPP meals of the day when the command /ipp is issued."""
 #     weekday = datetime.datetime.today().weekday()
-    
+
 #     with open('menu.json', 'r') as f:
 #         menu = json.load(f)
 #         today = ""
@@ -88,13 +88,13 @@ def sendMorningBriefing(bot, update):
 #             today += category + ":\n" + "- " + menu[category][weekday]["meal"] + "\n" + menu[category][weekday]["price"] + "\n\n"
 
 #         message = 'Heute gibt es folgende Gerichte im IPP: \n\n' + today
-#         update.message.reply_text(message)  
+#         update.message.reply_text(message)
 
 def main():
     """Start the bot."""
     token = ''
     with open('token.txt', 'r') as t:
-        token = t.read()
+        token = str.strip(t.read())
     updater = Updater(token)
     dp = updater.dispatcher
 
