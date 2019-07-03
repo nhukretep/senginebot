@@ -92,9 +92,10 @@ def sendMorningBriefing(bot, update):
 
 def main():
     """Start the bot."""
+    token = ''
     with open('token.txt', 'r') as t:
         token = t.read()
-        updater = Updater(token)
+    updater = Updater(token)
     dp = updater.dispatcher
 
     ### handle commands
@@ -103,7 +104,7 @@ def main():
     # dp.add_handler(CommandHandler("ipp", ipp))
 
     ### timer
-    job = updater.job_queue.run_daily(briefing, time = datetime.time(7, 00)) # send daily on time (for prod)
+    job = updater.job_queue.run_daily(sendMorningBriefing, time = datetime.time(7, 00)) # send daily on time (for prod)
     # job = updater.job_queue.run_repeating(sendMorningBriefing, interval=30, first=0) # send repeating (for dev)
 
     # log all errors
