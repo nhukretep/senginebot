@@ -68,10 +68,10 @@ def sendMorningBriefing(bot, update):
     chat_id_group = ''
 
     with open('chat_id_self.txt', 'r') as t:
-        chat_id_self = t.read()
+        chat_id_self = str.strip(t.read())
 
     with open('chat_id_group.txt', 'r') as t:
-        chat_id_group = t.read()
+        chat_id_group = str.strip(t.read())
 
     # bot.send_message(chat_id=chat_id_self, text=buildMorningBriefing()) # dev
     bot.send_message(chat_id=chat_id_group, text=buildMorningBriefing()) # prod
