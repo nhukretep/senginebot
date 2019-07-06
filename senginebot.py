@@ -24,7 +24,7 @@ def help(update, context):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Try /eisbach to get the current temperatur of eisbach.')
 
-def error(update, context, error):
+def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, error)
 
