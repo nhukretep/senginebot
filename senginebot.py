@@ -87,7 +87,7 @@ def setMorningBriefing(update, context):
         #     return
 
         # Add job to queue
-        job = context.job_queue.run_daily(sendMorningBriefing, time = datetime.time(7, 00)) # send daily on time (for prod)
+        job = context.job_queue.run_daily(sendMorningBriefing, time = datetime.time(7, 00), context = chat_id) # send daily on time (for prod)
         # job = context.job_queue.run_repeating(sendMorningBriefing, interval=30, first=0, context=chat_id) # send repeating (for dev)
 
         context.chat_data['job'] = job
