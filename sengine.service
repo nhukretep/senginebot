@@ -1,0 +1,11 @@
+[Unit]
+Description= sexy engine telegram bot
+Requires=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi/senginebot/
+ExecStart=/usr/bin/python3 ./senginebot.py
+
+[Install]
+WantedBy=multi-user.target
